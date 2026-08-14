@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 // TODO before first deploy: replace YOUR_GITHUB_USERNAME below (site + base + social link)
 // with your actual GitHub username/org once the repo exists.
 export default defineConfig({
-	site: 'matts-maps.github.io',
+	site: 'https://matts-maps.github.io',
 	base: '/ihdp-phl',
 
 	integrations: [

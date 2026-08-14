@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "description": "Philippine Humanitarian Data Package - a public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines",
+  "description": "The Integrated Humanitarian Data Package for the Philippines - a public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

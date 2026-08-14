@@ -1,9 +1,9 @@
 ---
 title: Overview
-description: What the Philippine Humanitarian Data Package is and who it's for.
+description: What the Integrated Humanitarian Data Package for the Philippines is and who it's for.
 ---
 
-The Philippine Humanitarian Data Package is a catalogue of GIS layers covering the Philippines, built for disaster response, health, development, and climate resilience work. It brings together administrative boundaries, population statistics, OpenStreetMap/Geofabrik infrastructure and facility layers, and SRTM elevation data in one place, each with consistent metadata: source, licence, coordinate system, attributes, and use cases.
+The Integrated Humanitarian Data Package for the Philippines is a catalogue of GIS layers covering the Philippines, built for disaster response, health, development, and climate resilience work. It brings together administrative boundaries, population statistics, OpenStreetMap/Geofabrik infrastructure and facility layers, and SRTM elevation data in one place, each with consistent metadata: source, licence, coordinate system, attributes, and use cases.
 
 ## Who it's for
 

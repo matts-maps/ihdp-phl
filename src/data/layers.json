@@ -1,0 +1,1196 @@
+{
+  "metadata": {
+    "title": "Philippine Humanitarian Data Package - Layer Inventory",
+    "description": "Initial dataset collection: Administrative boundaries, population statistics, OSM/Geofabrik data, and SRTM elevation models for the Philippines",
+    "version": "1.0.0",
+    "lastUpdated": "2026-08-14",
+    "totalLayers": 22,
+    "coverage": "Philippines (national to barangay level)",
+    "license": "Mixed (see individual layers)",
+    "contributors": [
+      "HDX",
+      "OpenStreetMap/Geofabrik",
+      "USGS SRTM",
+      "Philippine Statistics Authority"
+    ]
+  },
+  "layers": [
+    {
+      "id": "phl_adm_boundaries",
+      "name": "Administrative Boundaries - All Levels (National to Barangay)",
+      "description": "Hierarchical administrative divisions of the Philippines from national (1), regional (17), provincial (81), municipal/city (1,634), to barangay (42,028) levels. Source: HDX, conflated from multiple official government sources.",
+      "category": "boundaries",
+      "geometryType": "polygon",
+      "crs": "EPSG:4326",
+      "source": "HDX (Humanitarian Data Exchange)",
+      "sourceUrl": "https://data.humdata.org/dataset/philippines-administrative-divisions-geoboundaries",
+      "attribution": "HDX / GeoSpatial Bureau of Statistics (Philippines)",
+      "license": "CC BY 4.0",
+      "lastUpdated": "2024-11-01",
+      "featureCount": 44761,
+      "fileSize": "~85 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "geojson"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "adm0_name",
+          "type": "string",
+          "description": "Country name (Philippines)"
+        },
+        {
+          "name": "adm1_name",
+          "type": "string",
+          "description": "Region name"
+        },
+        {
+          "name": "adm1_pcode",
+          "type": "string",
+          "description": "Region PCODE"
+        },
+        {
+          "name": "adm2_name",
+          "type": "string",
+          "description": "Province name"
+        },
+        {
+          "name": "adm2_pcode",
+          "type": "string",
+          "description": "Province PCODE"
+        },
+        {
+          "name": "adm3_name",
+          "type": "string",
+          "description": "Municipality/City name"
+        },
+        {
+          "name": "adm3_pcode",
+          "type": "string",
+          "description": "Municipality PCODE"
+        },
+        {
+          "name": "adm4_name",
+          "type": "string",
+          "description": "Barangay name"
+        },
+        {
+          "name": "adm4_pcode",
+          "type": "string",
+          "description": "Barangay PCODE"
+        }
+      ],
+      "use_cases": [
+        "Administrative reference for disaster response",
+        "Base layer for aggregating data by municipality/barangay",
+        "Coverage area definition for other layers"
+      ],
+      "notes": "Multi-level dataset - filter by adm_level (0-4) for different administrative levels. PCODEs enable integration with government databases.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_pop_statistics",
+      "name": "Population Statistics by Municipality/City (2020 Census)",
+      "description": "Population data from the 2020 Census disaggregated by municipality/city, including total population, sex, age groups, and household data. Source: Philippine Statistics Authority via HDX.",
+      "category": "population",
+      "geometryType": "point",
+      "crs": "EPSG:4326",
+      "source": "Philippine Statistics Authority (PSA) / HDX",
+      "sourceUrl": "https://data.humdata.org/dataset/philippines-census-data",
+      "attribution": "PSA / Philippine Statistics Authority",
+      "license": "CC BY 4.0 / Open Government Data License",
+      "lastUpdated": "2024-12-01",
+      "featureCount": 1634,
+      "fileSize": "~2 MB (CSV + GeoJSON)",
+      "formats": [
+        "geojson",
+        "csv",
+        "xlsx"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "municipality_name",
+          "type": "string",
+          "description": "Municipality/City name"
+        },
+        {
+          "name": "pcode",
+          "type": "string",
+          "description": "Municipality PCODE"
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "description": "Region name"
+        },
+        {
+          "name": "total_population",
+          "type": "integer",
+          "description": "Total population (2020 Census)"
+        },
+        {
+          "name": "male_population",
+          "type": "integer",
+          "description": "Male population"
+        },
+        {
+          "name": "female_population",
+          "type": "integer",
+          "description": "Female population"
+        },
+        {
+          "name": "households",
+          "type": "integer",
+          "description": "Number of households"
+        },
+        {
+          "name": "avg_household_size",
+          "type": "float",
+          "description": "Average household size"
+        },
+        {
+          "name": "pop_density_per_sqkm",
+          "type": "float",
+          "description": "Population density per square km"
+        }
+      ],
+      "use_cases": [
+        "Estimating affected populations in disasters",
+        "Planning health/development interventions",
+        "Vulnerability assessments"
+      ],
+      "notes": "Point layer (municipality centroids). For barangay-level population, cross-reference with admin boundaries. Demographic breakdowns available in CSV.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_buildings",
+      "name": "OpenStreetMap Buildings",
+      "description": "Building footprints for the Philippines extracted from OpenStreetMap by Geofabrik. Includes polygons representing residential, commercial, industrial, and other structures.",
+      "category": "infrastructure",
+      "geometryType": "polygon",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0 (OpenStreetMap License)",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~8.5 million",
+      "fileSize": "~850 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Building name (if available)"
+        },
+        {
+          "name": "building",
+          "type": "string",
+          "description": "Building type (e.g., house, commercial, school)"
+        },
+        {
+          "name": "building_levels",
+          "type": "integer",
+          "description": "Number of stories (if available)"
+        },
+        {
+          "name": "roof_material",
+          "type": "string",
+          "description": "Roof type (if available)"
+        }
+      ],
+      "use_cases": [
+        "Evacuation center identification",
+        "Urban damage assessment post-disaster",
+        "Population exposure analysis"
+      ],
+      "notes": "Data quality varies by region - Metro Manila highly accurate, remote areas sparse. Community-maintained dataset.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_roads",
+      "name": "OpenStreetMap Roads & Streets",
+      "description": "Road network for the Philippines from OpenStreetMap. Includes highways, primary/secondary/tertiary roads, residential streets, and paths with classification and attributes.",
+      "category": "infrastructure",
+      "geometryType": "linestring",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~850,000",
+      "fileSize": "~180 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Road name"
+        },
+        {
+          "name": "highway",
+          "type": "string",
+          "description": "Road type (motorway, primary, secondary, tertiary, residential, etc.)"
+        },
+        {
+          "name": "surface",
+          "type": "string",
+          "description": "Surface type (paved, unpaved, gravel, etc.)"
+        },
+        {
+          "name": "maxspeed",
+          "type": "string",
+          "description": "Speed limit (if available)"
+        },
+        {
+          "name": "oneway",
+          "type": "string",
+          "description": "One-way street (yes/no)"
+        }
+      ],
+      "use_cases": [
+        "Accessibility analysis for disaster response",
+        "Emergency service routing",
+        "Supply chain/logistics planning"
+      ],
+      "notes": "Major highways well-mapped, rural/remote roads less complete. Updated regularly from OSM community.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_pois",
+      "name": "OpenStreetMap Points of Interest (POIs)",
+      "description": "Points of interest including hospitals, schools, police/fire stations, markets, religious sites, and other key facilities extracted from OpenStreetMap.",
+      "category": "facilities",
+      "geometryType": "point",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~450,000",
+      "fileSize": "~45 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Facility name"
+        },
+        {
+          "name": "amenity",
+          "type": "string",
+          "description": "Amenity type (hospital, school, police, fire_station, market, place_of_worship, etc.)"
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "description": "Operating organization (if available)"
+        },
+        {
+          "name": "addr_street",
+          "type": "string",
+          "description": "Street address"
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "Contact phone"
+        },
+        {
+          "name": "opening_hours",
+          "type": "string",
+          "description": "Operating hours (if available)"
+        }
+      ],
+      "use_cases": [
+        "Identifying emergency shelters and health facilities",
+        "Humanitarian access assessment",
+        "Service coverage mapping"
+      ],
+      "notes": "Comprehensive for urban areas, sparse in remote regions. Community-sourced - quality varies.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_waterways",
+      "name": "OpenStreetMap Waterways",
+      "description": "Rivers, streams, canals, and waterbodies for the Philippines. Used for flood modeling and water resource assessment.",
+      "category": "environment",
+      "geometryType": "linestring",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~85,000",
+      "fileSize": "~25 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Waterway name"
+        },
+        {
+          "name": "waterway",
+          "type": "string",
+          "description": "Type (river, stream, canal, drain, etc.)"
+        },
+        {
+          "name": "width",
+          "type": "float",
+          "description": "Approximate width in meters"
+        }
+      ],
+      "use_cases": [
+        "Flood risk identification",
+        "Watershed analysis",
+        "Water resource mapping"
+      ],
+      "notes": "Major rivers well-documented, minor streams incomplete in some areas.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_landuse",
+      "name": "OpenStreetMap Land Use",
+      "description": "Land use classification including residential, commercial, industrial, agricultural, forest, and natural areas for the Philippines.",
+      "category": "environment",
+      "geometryType": "polygon",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~500,000",
+      "fileSize": "~220 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Land use area name"
+        },
+        {
+          "name": "landuse",
+          "type": "string",
+          "description": "Land use type (residential, commercial, industrial, agricultural, forest, grass, etc.)"
+        },
+        {
+          "name": "natural",
+          "type": "string",
+          "description": "Natural feature type (if applicable)"
+        }
+      ],
+      "use_cases": [
+        "Urban/rural classification",
+        "Development planning",
+        "Environmental impact assessment"
+      ],
+      "notes": "More detailed in urban/populated areas. Agricultural classifications based on community mapping.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_natural",
+      "name": "OpenStreetMap Natural Areas",
+      "description": "Natural features including forests, wetlands, grasslands, and protected areas mapped in OpenStreetMap.",
+      "category": "environment",
+      "geometryType": "polygon",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~45,000",
+      "fileSize": "~85 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Natural area name"
+        },
+        {
+          "name": "natural",
+          "type": "string",
+          "description": "Natural feature type (forest, wetland, grassland, scrub, etc.)"
+        },
+        {
+          "name": "protected_area",
+          "type": "string",
+          "description": "Protected status (if applicable)"
+        }
+      ],
+      "use_cases": [
+        "Biodiversity mapping",
+        "Environmental conservation planning",
+        "Watershed protection"
+      ],
+      "notes": "Covers forests, wetlands, and officially-recognized protected areas.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_transportation",
+      "name": "OpenStreetMap Public Transportation",
+      "description": "Public transport routes including bus, rail, and ferry routes for the Philippines.",
+      "category": "infrastructure",
+      "geometryType": "linestring",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~2,500",
+      "fileSize": "~5 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Route name/number"
+        },
+        {
+          "name": "route",
+          "type": "string",
+          "description": "Route type (bus, tram, rail, ferry, etc.)"
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "description": "Operating company"
+        }
+      ],
+      "use_cases": [
+        "Evacuation route planning",
+        "Mobility assessment for humanitarian access",
+        "Logistics and supply chain routing"
+      ],
+      "notes": "Major routes well-documented, informal/local transport less complete.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_railway",
+      "name": "OpenStreetMap Railway Network",
+      "description": "Railway lines and stations for the Philippines including urban transit and intercity rail.",
+      "category": "infrastructure",
+      "geometryType": "linestring",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~8,000",
+      "fileSize": "~3 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Railway line name"
+        },
+        {
+          "name": "railway",
+          "type": "string",
+          "description": "Railway type (rail, light_rail, monorail, etc.)"
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "description": "Operating company"
+        }
+      ],
+      "use_cases": [
+        "Mass evacuation planning",
+        "Supply chain management",
+        "Accessibility mapping"
+      ],
+      "notes": "Urban transit (Metro Manila) well-mapped, intercity rail partially mapped.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_power",
+      "name": "OpenStreetMap Power Infrastructure",
+      "description": "Power generation (thermal, hydro, wind, solar), substations, and transmission lines for the Philippines.",
+      "category": "infrastructure",
+      "geometryType": "mixed",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~3,500",
+      "fileSize": "~8 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Facility name"
+        },
+        {
+          "name": "power",
+          "type": "string",
+          "description": "Power feature type (generator, substation, tower, cable, etc.)"
+        },
+        {
+          "name": "generator_source",
+          "type": "string",
+          "description": "Energy source (thermal, hydro, wind, solar, etc.)"
+        }
+      ],
+      "use_cases": [
+        "Disaster resilience assessment",
+        "Critical infrastructure mapping",
+        "Humanitarian response planning"
+      ],
+      "notes": "Major facilities mapped, distribution networks incomplete.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_water_supply",
+      "name": "OpenStreetMap Water Supply",
+      "description": "Water supply infrastructure including wells, pumps, water towers, treatment plants, and distribution pipelines.",
+      "category": "infrastructure",
+      "geometryType": "mixed",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~8,500",
+      "fileSize": "~12 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Facility name"
+        },
+        {
+          "name": "man_made",
+          "type": "string",
+          "description": "Infrastructure type (well, water_tower, pipeline, treatment_plant, etc.)"
+        },
+        {
+          "name": "water",
+          "type": "string",
+          "description": "Water type (potable, wastewater, etc.)"
+        }
+      ],
+      "use_cases": [
+        "WASH (Water, Sanitation, Hygiene) emergency planning",
+        "Water access mapping in disasters",
+        "Public health response"
+      ],
+      "notes": "Major systems documented, local/informal water systems less complete.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_health",
+      "name": "OpenStreetMap Health Facilities",
+      "description": "Hospitals, clinics, health centers, pharmacies, and other healthcare facilities from OpenStreetMap for the Philippines.",
+      "category": "facilities",
+      "geometryType": "point",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~18,500",
+      "fileSize": "~15 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Facility name"
+        },
+        {
+          "name": "healthcare",
+          "type": "string",
+          "description": "Facility type (hospital, clinic, health_center, pharmacy, etc.)"
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "description": "Operating organization"
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "Contact phone"
+        },
+        {
+          "name": "opening_hours",
+          "type": "string",
+          "description": "Operating hours"
+        }
+      ],
+      "use_cases": [
+        "Health emergency response planning",
+        "Accessibility analysis for medical services",
+        "Disease outbreak response coordination"
+      ],
+      "notes": "Urban hospitals well-mapped, rural health centers less complete. Cross-reference with official DOH registry for authoritative data.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_education",
+      "name": "OpenStreetMap Education Facilities",
+      "description": "Schools (primary, secondary, tertiary), universities, and educational institutions from OpenStreetMap.",
+      "category": "facilities",
+      "geometryType": "point",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~32,000",
+      "fileSize": "~20 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "School name"
+        },
+        {
+          "name": "amenity",
+          "type": "string",
+          "description": "Facility type (school, university, college, etc.)"
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "description": "School operator (public, private)"
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "Contact phone"
+        }
+      ],
+      "use_cases": [
+        "Evacuation shelter identification",
+        "Disaster preparedness drills planning",
+        "Education sector vulnerability assessment"
+      ],
+      "notes": "Primary and secondary schools well-documented in populated areas, less complete in rural regions.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_finance",
+      "name": "OpenStreetMap Finance & Services",
+      "description": "Banks, ATMs, post offices, and financial institutions from OpenStreetMap.",
+      "category": "facilities",
+      "geometryType": "point",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~12,500",
+      "fileSize": "~8 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Institution name"
+        },
+        {
+          "name": "amenity",
+          "type": "string",
+          "description": "Service type (bank, atm, post_office, money_exchanger, etc.)"
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "description": "Operating organization"
+        }
+      ],
+      "use_cases": [
+        "Humanitarian cash transfer logistics",
+        "Access to financial services mapping",
+        "Economic impact assessment"
+      ],
+      "notes": "Urban concentration; rural areas underrepresented.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_leisure",
+      "name": "OpenStreetMap Leisure & Recreation",
+      "description": "Parks, sports facilities, recreation areas, and tourist attractions from OpenStreetMap.",
+      "category": "facilities",
+      "geometryType": "mixed",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~28,500",
+      "fileSize": "~25 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Facility name"
+        },
+        {
+          "name": "leisure",
+          "type": "string",
+          "description": "Leisure type (park, sports_center, playground, garden, etc.)"
+        },
+        {
+          "name": "surface",
+          "type": "string",
+          "description": "Surface type (grass, asphalt, etc.)"
+        }
+      ],
+      "use_cases": [
+        "Open space identification for emergency shelters",
+        "Community resilience assessment",
+        "Urban planning"
+      ],
+      "notes": "Community parks well-mapped, rural recreation areas less documented.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_military",
+      "name": "OpenStreetMap Military & Government Facilities",
+      "description": "Military installations, government buildings, embassies, and administrative centers from OpenStreetMap.",
+      "category": "infrastructure",
+      "geometryType": "mixed",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~3,500",
+      "fileSize": "~6 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Facility name"
+        },
+        {
+          "name": "military",
+          "type": "string",
+          "description": "Military type (barracks, range, checkpoint, etc.)"
+        },
+        {
+          "name": "government",
+          "type": "string",
+          "description": "Government facility type (administrative, embassy, etc.)"
+        }
+      ],
+      "use_cases": [
+        "Disaster response coordination sites",
+        "Government service accessibility",
+        "Security and conflict mapping"
+      ],
+      "notes": "Some sensitive military facilities may not be publicly mapped for security reasons.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_agriculture",
+      "name": "OpenStreetMap Agriculture & Livestock",
+      "description": "Agricultural land, farms, orchards, fishponds, and livestock facilities from OpenStreetMap.",
+      "category": "environment",
+      "geometryType": "polygon",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~180,000",
+      "fileSize": "~95 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Farm/facility name"
+        },
+        {
+          "name": "landuse",
+          "type": "string",
+          "description": "Agricultural type (farmland, orchards, grassland, etc.)"
+        },
+        {
+          "name": "crop",
+          "type": "string",
+          "description": "Primary crop (if available)"
+        }
+      ],
+      "use_cases": [
+        "Agricultural disaster impact assessment",
+        "Food security planning",
+        "Livelihood recovery in post-disaster phase"
+      ],
+      "notes": "Coverage varies by region; better in agricultural zones.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_coastline",
+      "name": "OpenStreetMap Coastline & Tidal Data",
+      "description": "Philippine coastline, maritime boundaries, and tidal information from OpenStreetMap.",
+      "category": "environment",
+      "geometryType": "linestring",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~8,500",
+      "fileSize": "~12 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Geographic feature name"
+        },
+        {
+          "name": "natural",
+          "type": "string",
+          "description": "Coastal feature type (coastline, beach, reef, etc.)"
+        }
+      ],
+      "use_cases": [
+        "Typhoon/storm surge modeling",
+        "Sea level rise vulnerability",
+        "Marine disaster planning"
+      ],
+      "notes": "Complex coastline with islands. High-resolution data.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_osm_other",
+      "name": "OpenStreetMap Other Features",
+      "description": "Miscellaneous OpenStreetMap features not covered by other layers including monuments, archaeological sites, and other points of interest.",
+      "category": "facilities",
+      "geometryType": "mixed",
+      "crs": "EPSG:4326",
+      "source": "OpenStreetMap / Geofabrik",
+      "sourceUrl": "https://download.geofabrik.de/asia/philippines-latest.html",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "license": "ODbL 1.0",
+      "lastUpdated": "2025-01-10",
+      "featureCount": "~95,000",
+      "fileSize": "~35 MB (GeoPackage)",
+      "formats": [
+        "geopackage",
+        "shapefile",
+        "pbf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "attributes": [
+        {
+          "name": "osm_id",
+          "type": "string",
+          "description": "OpenStreetMap ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Feature name"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Feature type (historic, archaeological, etc.)"
+        }
+      ],
+      "use_cases": [
+        "Cultural heritage mapping",
+        "Disaster impact on heritage sites"
+      ],
+      "notes": "Diverse feature types; see OSM tags for detailed classification.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_srtm_90m",
+      "name": "SRTM Digital Elevation Model (90m resolution)",
+      "description": "Shuttle Radar Topography Mission (SRTM) 90-meter resolution elevation data for the Philippines. Provides topographic information for the entire country.",
+      "category": "elevation",
+      "geometryType": "raster",
+      "crs": "EPSG:4326",
+      "source": "USGS SRTM / NASA",
+      "sourceUrl": "https://earthexplorer.usgs.gov/",
+      "attribution": "NASA / USGS SRTM",
+      "license": "Public Domain",
+      "lastUpdated": "2000-02-11",
+      "fileSize": "~450 MB (GeoTIFF)",
+      "formats": [
+        "geotiff",
+        "hdf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "resolution": "90 meters",
+      "attributes": [
+        {
+          "name": "elevation",
+          "type": "float",
+          "description": "Elevation in meters above sea level"
+        }
+      ],
+      "use_cases": [
+        "Terrain analysis for disaster planning",
+        "Slope calculation for landslide risk assessment",
+        "Hydrological modeling and flood risk",
+        "Accessibility and terrain-based routing"
+      ],
+      "notes": "Original SRTM data from 2000; post-processing and gap-filling have been applied. Vertical accuracy \u00b116m (90% confidence). Suitable for regional/national planning.",
+      "contact": "data-admin@example.org"
+    },
+    {
+      "id": "phl_srtm_30m",
+      "name": "SRTM+ Digital Elevation Model (30m resolution)",
+      "description": "Higher-resolution SRTM+ (SRTM Plus) 30-meter elevation data for the Philippines. Improved vertical accuracy and void-filled for better local-scale analysis.",
+      "category": "elevation",
+      "geometryType": "raster",
+      "crs": "EPSG:4326",
+      "source": "USGS SRTM+ / NASA / JPL",
+      "sourceUrl": "https://lpdaac.usgs.gov/products/srtmgl1v003/",
+      "attribution": "NASA / USGS / JPL SRTM+",
+      "license": "Public Domain",
+      "lastUpdated": "2015-05-01",
+      "fileSize": "~3.2 GB (GeoTIFF, full coverage)",
+      "formats": [
+        "geotiff",
+        "hdf"
+      ],
+      "downloadUrl": null,
+      "downloadStatus": "pending",
+      "resolution": "30 meters",
+      "attributes": [
+        {
+          "name": "elevation",
+          "type": "float",
+          "description": "Elevation in meters above sea level"
+        }
+      ],
+      "use_cases": [
+        "Detailed terrain analysis for disaster planning",
+        "High-resolution landslide hazard mapping",
+        "Flood modeling and drainage analysis",
+        "Precision agriculture and site planning",
+        "Infrastructure site selection"
+      ],
+      "notes": "Improved gap-filling and processing compared to 90m version. Vertical accuracy \u00b110m (90% confidence). Recommended for municipal/barangay-level planning and detailed hazard mapping.",
+      "contact": "data-admin@example.org"
+    }
+  ]
+}

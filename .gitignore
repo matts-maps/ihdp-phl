@@ -1,0 +1,42 @@
+# Large binary GIS files - never commit these
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+*.qix
+*.tif
+*.tiff
+*.geotiff
+*.img
+*.hdf
+*.gpkg
+*.geopackage
+
+# Large datasets
+data/layers/**/*.zip
+data/layers/**/*.tar.gz
+
+# Node
+node_modules/
+dist/
+.astro/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# npm logs
+npm-debug.log*

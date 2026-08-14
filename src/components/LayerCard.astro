@@ -1,0 +1,39 @@
+---
+interface Props {
+	id: string;
+	name: string;
+	description: string;
+	category: string;
+	geometryType: string;
+	featureCount?: string | number;
+	lastUpdated: string;
+	downloadStatus: 'pending' | 'available';
+}
+
+const { id, name, description, category, geometryType, featureCount, lastUpdated, downloadStatus } =
+	Astro.props;
+---
+
+<a
+	href={`/humanitarian-data-package-phl/layers/${id}/`}
+	class="not-content block rounded-lg border border-[var(--sl-color-hairline)] p-4 no-underline transition hover:shadow-lg hover:border-[var(--ma-blue)]"
+>
+	<div class="mb-2 flex items-start justify-between gap-2">
+		<h3 class="m-0 text-base font-bold text-[var(--sl-color-white)]">{name}</h3>
+		<span class={`ma-tile shrink-0 whitespace-nowrap px-2 py-1 text-xs font-bold category-${category}`}>
+			{category}
+		</span>
+	</div>
+
+	<p class="m-0 mb-3 text-sm text-[var(--sl-color-gray-2)]">{description}</p>
+
+	<div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-[var(--sl-color-gray-3)]">
+		<span>Geometry: {geometryType}</span>
+		{featureCount && <span>Features: {featureCount}</span>}
+		<span>Updated: {lastUpdated}</span>
+	</div>
+
+	<div class="mt-3 text-xs font-bold" style={`color: ${downloadStatus === 'available' ? 'var(--ma-dark-teal)' : 'var(--ma-grey)'}`}>
+		{downloadStatus === 'available' ? '● Hosted for download' : '○ Source link only (not yet hosted)'}
+	</div>
+</a>

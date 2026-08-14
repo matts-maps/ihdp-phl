@@ -1,0 +1,37 @@
+---
+title: Philippine Humanitarian Data Package
+description: A public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines.
+template: splash
+hero:
+  tagline: A public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines.
+  actions:
+    - text: Browse layers
+      link: /layers/phl_adm_boundaries/
+      icon: right-arrow
+      variant: primary
+    - text: Getting started
+      link: /guides/getting-started/
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import LayerGrid from '../../components/LayerGrid.astro';
+import layersData from '../../data/layers.json';
+
+<CardGrid stagger>
+	<Card title="Layers" icon="seti:json">
+		{layersData.layers.length} GIS layers covering boundaries, population, infrastructure, facilities, environment, and elevation.
+	</Card>
+	<Card title="Coverage" icon="compass">
+		{layersData.metadata.coverage}
+	</Card>
+	<Card title="Last updated" icon="pencil">
+		{layersData.metadata.lastUpdated}
+	</Card>
+</CardGrid>
+
+## All layers
+
+<LayerGrid layers={layersData.layers} />
+
+Most layers are currently source-linked rather than hosted directly here - see each layer's page for where to get it today. Hosted downloads are being added as data is uploaded; see the [changelog](/guides/changelog/) for progress.

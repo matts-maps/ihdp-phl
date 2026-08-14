@@ -1,0 +1,28 @@
+{
+  "name": "humanitarian-data-package-phl",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Philippine Humanitarian Data Package - a public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "npm run validate:metadata && npm run generate:layers && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate:layers": "node scripts/generate-layers.js",
+    "validate:metadata": "node scripts/validate-metadata.js"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.41.7",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.2",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^5.6.0"
+  }
+}

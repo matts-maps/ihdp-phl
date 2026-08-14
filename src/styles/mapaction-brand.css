@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+/*
+ * MapAction brand colours and type, applied on top of Starlight's default
+ * theme. Source: MapAction Guidelines 2017 v1.0 (see planning-documents /
+ * reference/docs-for-chat/mapaction-branding.md).
+ *
+ * Primary: Red #e53d2f, Blue #19458d, Teal #38b6ab
+ * Secondary: Light Blue #92b4ec, Yellow #fdc500, Grey #a0a1a2, Dark Grey #666d6e, Dark Teal #009b89
+ * Web font: Arial (print uses Eurostile/Helvetica Neue, not used here)
+ */
+
+:root {
+	--ma-red: #e53d2f;
+	--ma-blue: #19458d;
+	--ma-teal: #38b6ab;
+	--ma-light-blue: #92b4ec;
+	--ma-yellow: #fdc500;
+	--ma-grey: #a0a1a2;
+	--ma-dark-grey: #666d6e;
+	--ma-dark-teal: #009b89;
+
+	/* Starlight accent = MapAction Blue, with light-mode tints generated to keep contrast */
+	--sl-color-accent-low: #d8e1f3;
+	--sl-color-accent: var(--ma-blue);
+	--sl-color-accent-high: #0f2d5c;
+
+	--sl-font: Arial, Helvetica, sans-serif;
+}
+
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #16264a;
+	--sl-color-accent: var(--ma-light-blue);
+	--sl-color-accent-high: #c3d6f7;
+}
+
+/* Category tags on layer cards - see LayerCard.astro */
+.category-boundaries { background: var(--sl-color-accent-low); color: var(--ma-blue); }
+.category-population { background: #fbdad6; color: var(--ma-red); }
+.category-infrastructure { background: #fff3cc; color: #7a5b00; }
+.category-facilities { background: #d7f0ee; color: var(--ma-dark-teal); }
+.category-environment { background: #e3f4e0; color: #2f7a1f; }
+.category-elevation { background: #ececec; color: var(--ma-dark-grey); }
+
+.ma-tile {
+	border-radius: 4px;
+}

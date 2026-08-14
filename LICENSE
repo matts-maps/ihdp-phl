@@ -1,0 +1,11 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+This licence applies to the site content and layer metadata in this repository
+(text, code, and the layers.json catalogue). It does NOT apply to the
+underlying GIS data itself, which is licensed per source - see each layer's
+page for its specific licence (OpenStreetMap/Geofabrik data is ODbL 1.0, HDX
+data is typically CC BY 4.0, SRTM elevation data is public domain).
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+TODO: confirm this is the right licence for the site/metadata before publishing.

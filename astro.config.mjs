@@ -11,7 +11,7 @@ export default defineConfig({
 
 	integrations: [
 		starlight({
-			title: 'Integrated Humanitarian Data Package for the Philippines',
+			title: 'The Integrated Humanitarian Data Package for the Philippines',
 			description:
 				'A public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines.',
 			logo: {

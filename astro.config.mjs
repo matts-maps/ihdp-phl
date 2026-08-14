@@ -6,12 +6,12 @@ import tailwindcss from '@tailwindcss/vite';
 // TODO before first deploy: replace YOUR_GITHUB_USERNAME below (site + base + social link)
 // with your actual GitHub username/org once the repo exists.
 export default defineConfig({
-	site: 'https://YOUR_GITHUB_USERNAME.github.io',
-	base: '/humanitarian-data-package-phl',
+	site: 'matts-maps.github.io',
+	base: '/ihdp-phl',
 
 	integrations: [
 		starlight({
-			title: 'Philippine Humanitarian Data Package',
+			title: 'Integrated Humanitarian Data Package for the Philippines',
 			description:
 				'A public catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines.',
 			logo: {
@@ -22,7 +22,7 @@ export default defineConfig({
 				{
 					icon: 'github',
 					label: 'GitHub',
-					href: 'https://github.com/YOUR_GITHUB_USERNAME/humanitarian-data-package-phl',
+					href: 'https://github.com/matts-maps/ihdp-phl',
 				},
 			],
 			customCss: ['./src/styles/mapaction-brand.css'],

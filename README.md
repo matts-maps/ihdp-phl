@@ -1,4 +1,4 @@
-# Philippine Humanitarian Data Package
+# The Integrated Humanitarian Data Package for the Philippines
 
 A catalogue of GIS layers for disaster response, health, development, and climate resilience work in the Philippines. Built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build), branded for MapAction.
 
